@@ -1,0 +1,24 @@
+<div>
+  <p>
+    <ngb-alert [type]="alertType" *ngIf="showMessage" (close)="closeAlert()">
+      {{message}}
+    </ngb-alert>
+  </p>
+  <div class="col-12">
+    <form [formGroup]="searchForm" (ngSubmit)="searchEntries()" class="row">
+      <div class="col-lg-5 col-sm-3 col-md-4">
+        <input for="searchParam" formControlName="searchParam" type="search" name="query" class="form-control"
+               (keyup)="searchEntries()" placeholder="Search">
+      </div>
+      <div class="col-lg-3 col-sm-2 col-md-3">
+        <button class="btn btn-outline-primary" (click)="searchEntries()">Search</button>
+      </div>
+      <div class="col-lg-4 col-sm-2 col-md-3">
+        <button class="btn btn-outline-primary float-right" (click)="openFormModal()">Add Contact</button>
+      </div>
+    </form>
+  </div>
+</div>
+<div class="container-fluid">
+  <app-contact class="col-12" *ngFor="let entry of entries" [entry]="entry"></app-contact>
+</div>

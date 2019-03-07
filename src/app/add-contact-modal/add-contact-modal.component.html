@@ -1,0 +1,41 @@
+<div class="modal-header">
+
+  <!-- Title -->
+  <h4 class="modal-title">New Contact</h4>
+
+  <!-- X icon -->
+  <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">X
+  </button>
+</div>
+
+<form
+  [formGroup]="contactForm" (ngSubmit)="submitForm()">
+
+  <div class="modal-boy">
+    <div class="container">
+
+      <!-- Field -->
+      <div class="form-group">
+        <label for="name">Contact Name</label>
+        <input id="name" type="text" class="form-control" formControlName="name"  required="Name required"/>
+      </div>
+
+      <!-- Field -->
+      <div class="form-group">
+        <label for="cphoneNumber">Contact Phone number</label>
+        <input id="cphoneNumber" type="text" class="form-control" formControlName="phoneNumber" minlength="10"
+               maxlength="10" required="Phone number required">
+      </div>
+
+    </div>
+  </div>
+
+
+  <div class="modal-footer">
+
+    <button class="btn btn-success" [disabled]="!contactForm.valid">Submit</button>
+
+    <button type="button" class="btn btn-danger" (click)="activeModal.dismiss('Close clicked')">Cancel</button>
+
+  </div>
+</form>
